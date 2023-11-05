@@ -21,10 +21,13 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+  
       - name: npm install, build, and test
         run: |
           npm install --force
-          ng build demo --configuration production
+          npx ng build demo --configuration production
           npm run test --if-present
 
       - name: Zip artifact for deployment
