@@ -29,14 +29,13 @@
           },
           "configurations": {
             "production": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
+              "outputHashing": "none",
+              "sourceMap": true,
               "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
+              "aot": false,
+              "extractLicenses": false,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": false
             },
             "development": {
               "optimization": true,

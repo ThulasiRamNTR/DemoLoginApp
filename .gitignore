@@ -5,3 +5,5 @@
 /.vs
 /DemoLoginApp/.vscode
 /node_modules
+/.angular/cache/16.2.9
+/dist/demo
