@@ -29,13 +29,6 @@ jobs:
           npm install --force
           npx ng build demo --configuration production
 
-      - name: Copy files from dist/demo to root directory
-        run: |
-          cp -r dist/demo/* .
-
-      - name: Create zip archive
-        run: Compress-Archive -Path .\* -DestinationPath release.zip
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
