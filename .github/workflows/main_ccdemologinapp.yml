@@ -29,11 +29,17 @@ jobs:
           npm install --force
           npx ng build demo --configuration production
 
+      - name: Create artifact archive
+        run: |
+          mkdir -p archive
+          zip -r archive/node-app.zip dist/demo
+          working-directory: ${{ runner.workspace }}
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: .
+          path: archive/node-app.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -55,4 +61,4 @@ jobs:
           app-name: 'CCDemoLoginApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7A858C7F6618439A9B79911C5002E8EA }}
-          package: .
+          package: ./dist/demo
