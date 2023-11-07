@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Enable detailed logs
+        run: echo "::set-env name=ACTIONS_RUNNER_DEBUG::1"
+
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
