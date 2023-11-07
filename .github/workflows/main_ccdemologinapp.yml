@@ -33,7 +33,7 @@ jobs:
         run: |
           # Create a zip archive of the build output directory using 7z
           mkdir -p archive
-          7z a -r archive\node-app.zip dist`demo
+          7z a -r archive\node-app.zip dist\demo
         shell: pwsh  # Use PowerShell as the shell to run the 7z command
         working-directory: ${{ runner.workspace }}
       
