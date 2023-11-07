@@ -1,5 +1,7 @@
+import { WindowService } from './../../service/window.service';
 import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { UserService } from "./../../service/user.service";
+import { AuthService } from 'app/service/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,13 +12,18 @@ import { UserService } from "./../../service/user.service";
 export class SignUpComponent implements OnInit {
   userData: any;
   value = "";
-  constructor(private user: UserService) { }
+  
+  constructor(private user: UserService, private authService: AuthService, private WindowService: WindowService) { }
 
   ngOnInit() {
     this.user.currentUserData.subscribe(userData => this.userData = userData)
   }
+  
   signUp(data: any){
-    
+    if(data?.password != data?.c_password){
+      this.WindowService.Alert("Password do not match");
+    }
+    this.authService.signUp(data?.email, data?.password);
     this.user.changeData(data);
   }
 

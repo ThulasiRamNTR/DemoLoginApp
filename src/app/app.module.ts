@@ -14,6 +14,6 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
   imports:      [ BrowserModule, FormsModule ,AppRoutingModule ],
   declarations: [ AppComponent, HelloComponent, LoginComponent, SignUpComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [UserService]
+  providers:    [UserService]
 })
 export class AppModule { }

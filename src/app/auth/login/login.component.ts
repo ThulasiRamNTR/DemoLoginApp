@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "./../../service/user.service";
+import { AuthService } from "app/service/auth.service";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -7,7 +8,8 @@ import { UserService } from "./../../service/user.service";
 })
 export class LoginComponent implements OnInit {
   userData: any;
-  constructor(private user: UserService) {}
+  
+  constructor(private user: UserService, private authService: AuthService) {}
 
   ngOnInit() {
     this.user.currentUserData.subscribe(userData => (this.userData = userData));
@@ -18,6 +20,7 @@ export class LoginComponent implements OnInit {
     this.user.changeData(msg);
   }
   login(data: any) {
+    this.authService.logIn(data?.email, data?.password);
     this.user.changeData(data);
   }
 }
