@@ -55,4 +55,4 @@ jobs:
           app-name: 'CCDemoLoginApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7A858C7F6618439A9B79911C5002E8EA }}
-          package: ./dist/demo
+          package: .
