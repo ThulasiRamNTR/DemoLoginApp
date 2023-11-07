@@ -29,19 +29,11 @@ jobs:
           npm install --force
           npx ng build demo --configuration production
 
-      - name: Create artifact archive
-        run: |
-          # Create a zip archive of the build output directory using 7z
-          mkdir -p archive
-          7z a -r archive\node-app.zip dist\demo
-        shell: pwsh  # Use PowerShell as the shell to run the 7z command
-        working-directory: ${{ runner.workspace }}
-      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: node-app.zip
+          path: .
 
   deploy:
     runs-on: windows-latest
